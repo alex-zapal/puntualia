@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Granja Puntuina</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fefce8;--cd:#fff;--tx:#1c1917;--mu:#57534e;--g:#047857;--gd:#064e3b;--a:#f59e0b;--al:#fef3c7;--bd:#fcd34d;--ok:#a7f3d0;--no:#fecdd3;color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13201a;--cd:#1e2e26;--tx:#f5f5f4;--mu:#d6d3d1;--al:#3b3314;--bd:#a16207;--ok:#065f46;--no:#7f1d1d}}
+:root[data-theme="dark"]{--bg:#13201a;--cd:#1e2e26;--tx:#f5f5f4;--mu:#d6d3d1;--al:#3b3314;--bd:#a16207;--ok:#065f46;--no:#7f1d1d}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:18px/1.5 Lexend,system-ui,sans-serif;-webkit-user-select:none;user-select:none}
+h1,h2,h3{font-family:Fredoka,system-ui,sans-serif;margin:0}
+header{background:var(--gd);color:#fde68a;border-bottom:4px solid var(--a);padding:10px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+header h1{font-size:1.5rem;cursor:pointer}
+nav{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer}
+.b{border:0;border-bottom:4px solid rgba(0,0,0,.3);border-radius:16px;padding:10px 16px;font-weight:600;background:var(--g);color:#fff}
+.b.y{background:var(--a);color:#292524}
+.b.l{background:var(--al);color:var(--tx);border:2px solid var(--bd)}
+.b:active{transform:translateY(2px)}
+main{max-width:900px;margin:0 auto;padding:20px 16px}
+.cd{background:var(--cd);border:3px solid var(--bd);border-radius:24px;padding:20px;margin-bottom:16px;max-width:100%}
+.hero{background:linear-gradient(135deg,#d97706,#047857);color:#fff;border-radius:24px;padding:28px;margin-bottom:20px}
+.hero h2{font-size:clamp(1.6rem,5vw,2.4rem);margin-bottom:8px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.pb{height:12px;background:var(--al);border-radius:9px;overflow:hidden;border:1px solid var(--bd)}
+.pb i{display:block;height:100%;background:var(--g);transition:width .3s}
+.bank{display:flex;flex-wrap:wrap;gap:14px 22px;justify-content:center;padding:14px;margin:16px 0;border:3px dashed var(--bd);border-radius:20px;background:var(--al)}
+.sym{width:76px;height:76px;border-radius:22px;border:4px solid var(--gd);background:var(--g);color:#fff;font:700 3rem/1 Fredoka,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;touch-action:none;cursor:grab}
+.sym.p{background:var(--a);color:#292524;border-color:#b45309}
+.sym.on{outline:5px solid #38bdf8;transform:scale(1.1)}
+#gh{position:fixed;display:none;pointer-events:none;z-index:9;transform:translate(-50%,-50%) scale(1.2);opacity:.9}
+.sent{font-size:1.7rem;line-height:2.6;text-align:center;white-space:pre-wrap;padding:20px 12px;background:var(--cd);border:2px solid var(--bd);border-radius:20px}
+.slot{display:inline-block;width:0;height:1.5em;line-height:1.35em;vertical-align:middle;border:0;border-radius:10px;font:700 1.9rem Fredoka,system-ui,sans-serif;cursor:pointer;text-align:center;color:#1c1917;overflow:hidden}
+.slot.fc,.slot.fp,.slot.fo{width:auto;min-width:1.2em;margin:0 2px}
+.slot.fo{background:#e9d5ff;border:3px solid #7e22ce}
+.sym.o{background:#7e22ce;border-color:#581c87;color:#fff}
+.bank.s .sym{width:58px;height:58px;font-size:2.1rem;border-radius:16px}
+.slot.fc{background:var(--ok);border:3px solid var(--g)}
+.slot.fp{background:#fde68a;border:3px solid #b45309}
+.slot.no{background:var(--no)!important;border-color:#e11d48!important;color:var(--tx)}
+.slot.ok{background:var(--ok)!important;border:3px solid var(--g)!important;color:var(--tx)}
+.fb{padding:14px 16px;border-radius:16px;margin:14px 0;border:2px solid var(--bd)}
+.fb.s{background:var(--ok)}.fb.e{background:var(--no)}.fb.w{background:var(--al)}
+.fb small{display:block;font-size:1rem;font-weight:400}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.farm{background:linear-gradient(#7dd3fc,#bbf7d0 55%,#15803d);border-radius:24px;padding:16px;border:4px solid var(--gd)}
+.farm .cd{margin:0;color:var(--tx)}
+.lock{opacity:.5;filter:grayscale(1)}
+label{display:block;font-weight:600;margin:10px 0 4px}
+input,select{font:inherit;width:100%;padding:10px;border:2px solid var(--bd);border-radius:12px;background:var(--cd);color:var(--tx);user-select:text}
+code{background:var(--al);padding:1px 6px;border-radius:6px}
+small{color:var(--mu)}
+.hide{display:none!important}
+footer{text-align:center;padding:16px;color:var(--mu);font-size:.9rem}
+</style></head>
+<body>
+<div id="gh"></div>
+<header>
+ <h1 onclick="show('home')" role="button">🌾 La Granja Puntuina</h1>
+ <nav>
+  <button class="b l" id="au" onclick="aud()" aria-label="Sonido">🔊</button>
+  <button class="b y" onclick="show('farm')">🚜 Mi Granja <span id="sb">0 ★</span></button>
+  <button class="b" onclick="show('guide')">📖 Guía</button>
+  <button class="b l" onclick="show('teacher')">👩‍🏫 Docente</button>
+ </nav>
+</header>
+<main>
+<section id="s-home">
+ <div class="hero"><h2>¡Pon cada signo de puntuación en su lugar!</h2>
+ <p>Lee cada frase, arrastra los signos a los espacios y gana estrellas para tu granja.</p></div>
+ <h2 style="margin-bottom:12px">Elige tu nivel</h2>
+ <div class="grid" id="lv"></div>
+</section>
+
+<section id="s-game" class="hide">
+ <div class="cd row"><button class="b l" onclick="show('home')">🏠 Menú</button><b id="lvi"></b>
+  <div class="pb" style="flex:1 1 100%"><i id="pr" style="width:0"></i></div></div>
+ <div class="cd">
+  <div class="row"><div><b>🦉 Profesor Búho dice:</b><br><small>Lee la frase, piensa dónde falta un signo y suéltalo ahí, justo después de la palabra (o toca el signo y luego el lugar). Toca un signo puesto para quitarlo.</small></div>
+   <button class="b" onclick="say()">🔊 Escuchar frase</button></div>
+  <div id="bank" class="bank">
+   <div style="text-align:center"><div class="sym" data-s="," role="button" aria-label="Coma">,</div><b>Coma</b></div>
+   <div style="text-align:center"><div class="sym p" data-s="." role="button" aria-label="Punto">.</div><b>Punto</b></div>
+  </div>
+  <div id="sent" class="sent"></div>
+  <div id="fb" class="fb hide"></div>
+  <div style="text-align:center;margin-top:14px">
+   <button id="bc" class="b" style="font-size:1.3rem;padding:14px 32px" onclick="check()">✅ Comprobar</button>
+   <button id="bn" class="b y hide" style="font-size:1.3rem;padding:14px 32px" onclick="next()"></button>
+  </div>
+ </div>
+</section>
+
+<section id="s-farm" class="hide">
+ <div class="cd row"><div><h2>Mi Granja de la Puntuación</h2><small id="fn"></small></div><button class="b l" onclick="show('home')">← Volver</button></div>
+ <div class="farm"><div class="grid" id="fg" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"></div></div>
+ <p><small>Ganas 2 ★ si aciertas a la primera y 1 ★ si aciertas después de corregir.</small></p>
+</section>
+
+<section id="s-guide" class="hide">
+ <div class="cd row"><div><h2>Guía de comas y puntos</h2></div><button class="b l" onclick="show('home')">← Volver</button></div>
+ <div class="grid">
+  <div class="cd"><h3>El punto (.) — pausa larga</h3><p>Cierra una oración completa. Después de un punto, la palabra siguiente va con mayúscula.</p><p><b>Ejemplo:</b> El caballo corre en el prado<b>.</b> Luego descansa<b>.</b></p></div>
+  <div class="cd"><h3>La coma (,) — pausa breve</h3><p>Separa los elementos de una lista y marca una pausa sin cerrar la oración.</p><p><b>Ejemplo:</b> Cosechamos tomates<b>,</b> papas<b>,</b> cebollas y maíz.</p></div>
+  <div class="cd"><h3>Ojo con la lista</h3><p>Antes de la «y» que une el último elemento no se escribe coma.</p></div>
+  <div class="cd"><h3>Conectores y comienzos</h3><p>Va coma después de «Sin embargo», «Además», «Por esta razón» o «Durante el verano» al inicio de la oración.</p></div>
+  <div class="cd"><h3>El punto y coma (;)</h3><p>Pausa más larga que la coma y más corta que el punto. Separa ideas que están muy relacionadas.</p><p><b>Ejemplo:</b> Llovió toda la noche<b>;</b> por la mañana<b>,</b> los campos brillaban.</p></div>
+  <div class="cd"><h3>Los puntos suspensivos (…)</h3><p>Indican que algo queda sin terminar o que una lista sigue.</p><p><b>Ejemplo:</b> Compramos papas, zanahorias, cebollas<b>…</b></p></div>
+  <div class="cd"><h3>Los paréntesis ( )</h3><p>Encierran una aclaración. Siempre se abren y se cierran.</p><p><b>Ejemplo:</b> Mi abuelo <b>(</b>el que vive en el campo<b>)</b> cría ovejas.</p></div>
+  <div class="cd"><h3>Exclamación (¡ !)</h3><p>Muestran emoción o sorpresa. Se abre con ¡ y se cierra con !</p><p><b>Ejemplo:</b> <b>¡</b>Qué linda cosecha<b>!</b></p></div>
+  <div class="cd"><h3>Interrogación (¿ ?)</h3><p>Se usan en las preguntas. Se abre con ¿ y se cierra con ?</p><p><b>Ejemplo:</b> <b>¿</b>Cuántos huevos puso la gallina<b>?</b></p></div>
+ </div>
+</section>
+
+<section id="s-teacher" class="hide">
+ <div class="cd row"><div><h2>Panel del docente</h2><small>Crea frases, imprime fichas y gestiona el progreso. Todo se guarda en este dispositivo.</small></div><button class="b l" onclick="show('home')">← Volver</button></div>
+ <div class="cd"><h3>Agregar frase</h3>
+  <p>Escribe la frase con <code>[,]</code> donde va una coma y <code>[.]</code> donde va un punto. También sirven <code>[;]</code> <code>[…]</code> <code>[¿]</code> <code>[?]</code> <code>[¡]</code> <code>[!]</code> <code>[(]</code> <code>[)]</code>.<br><small>Ejemplo: En el huerto hay lechugas[,] tomates y zapallos[.]</small></p>
+  <label for="tl">Nivel</label><select id="tl"><option value="1">Nivel 1 (1.º y 2.º)</option><option value="2">Nivel 2 (3.º y 4.º)</option><option value="3">Nivel 3 (5.º y 6.º)</option><option value="4">Nivel 4 (todos los signos)</option></select>
+  <label for="tt">Frase</label><input id="tt" placeholder="Alimentamos a las vacas[,] ovejas y patos[.]">
+  <label for="th">Pista para el alumno (opcional)</label><input id="th" placeholder="Coma para enumerar y punto al terminar.">
+  <p><button class="b" onclick="addS()">💾 Guardar frase</button> <b id="tm"></b></p>
+  <h3>Mis frases</h3><ul id="cl"></ul>
+ </div>
+ <div class="cd"><h3>Ficha imprimible</h3>
+  <div class="grid"><div><label for="tp">Contenido</label><select id="tp"><option value="0">Todos los niveles</option><option value="1">Solo nivel 1</option><option value="2">Solo nivel 2</option><option value="3">Solo nivel 3</option><option value="4">Solo nivel 4</option></select></div>
+  <div><label><input type="checkbox" id="tk" checked style="width:auto"> Incluir solucionario</label></div></div>
+  <p><button class="b y" onclick="prt()">🖨️ Imprimir ficha</button> <b id="tm2"></b></p></div>
+ <div class="cd"><h3>Progreso</h3><button class="b l" onclick="rst(this)">Reiniciar progreso</button></div>
+</section>
+</main>
+<footer>La Granja Puntuina · Recurso para escuelas rurales multigrado · Lenguaje y Comunicación</footer>
+
+<script>
+const $=i=>document.getElementById(i),E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LV=[{e:'🥚',n:'El Gallinero',g:'1.º y 2.º Básico',d:'Comas en listas sencillas y puntos finales.'},
+{e:'🥕',n:'La Huerta',g:'3.º y 4.º Básico',d:'Comas para enumerar y puntos entre oraciones.'},
+{e:'🌲',n:'El Bosque',g:'5.º y 6.º Básico',d:'Comas tras conectores y al inicio de la oración.'},
+{e:'🏘️',n:'El Pueblo',g:'Todos los signos',d:'Punto y coma, puntos suspensivos, paréntesis, exclamación e interrogación.'}];
+const SYM={',':'Coma','.':'Punto',';':'Punto y coma','…':'Puntos suspensivos','¿':'Abre pregunta','?':'Cierra pregunta','¡':'Abre exclamación','!':'Cierra exclamación','(':'Abre paréntesis',')':'Cierra paréntesis'};
+const BASE=[
+[1,'Las gallinas comen maíz[,] trigo y cebada en el patio[.]','Coma para separar la lista y punto para cerrar la oración.'],
+[1,'El caballo café corre alegre por el prado[.] Su dueño lo cuida con cariño[.]','Cada oración completa termina con punto.'],
+[1,'En la canasta juntamos manzanas[,] peras y duraznos[.]','Coma entre los elementos de la lista.'],
+[1,'El perro Boby cuida a las ovejas[,] los patos y los conejos[.]','Coma entre los animales de la lista.'],
+[1,'Por la mañana ordeñamos a la vaca[.] La leche está tibia y muy rica[.]','Hay dos oraciones, así que van dos puntos.'],
+[1,'El agua del arroyo es limpia[,] fresca y transparente[.]','Coma entre las cualidades del agua.'],
+[1,'En la tierra fértil sembramos maíz[,] porotos y zapallos[.]','Coma en la lista de semillas.'],
+[2,'En la huerta cosechamos tomates[,] lechugas[,] zanahorias y papas[.]','Comas entre las verduras; antes de «y» no va coma.'],
+[2,'Por la mañana alimentamos a las aves[.] Por la tarde[,] regamos las plantas del huerto[.]','Punto entre oraciones y coma tras «Por la tarde».'],
+[2,'En la bodega guardamos palas[,] rastrillos[,] baldes y mangueras[.]','Las comas ordenan la lista de herramientas.'],
+[2,'En la feria del pueblo vendemos miel[,] quesos[,] mermeladas y pan amasado[.] Todos los vecinos van a comprar[.]','Comas en la lista de productos y puntos al cerrar cada oración.'],
+[2,'Las nubes oscuras cubrieron las montañas[.] Pronto la lluvia mojó los campos[,] los árboles y los senderos[.]','Punto entre oraciones y comas en la lista de lo que se mojó.'],
+[2,'Las abejas vuelan entre flores de manzanilla[,] lavanda y eucalipto[.] Ellas fabrican una miel muy dulce[.]','Comas para las flores y un punto por cada oración.'],
+[2,'La abuela hila la lana de las ovejas[.] Luego teje gorros[,] bufandas y mantas de abrigo[.]','Punto al cerrar la primera idea y comas en la lista de prendas.'],
+[3,'El sol salía sobre las montañas[.] Sin embargo[,] los niños caminaban con alegría hacia la escuela[.]','Coma después del conector «Sin embargo».'],
+[3,'Durante el recorrido observamos vacas[,] ovejas[,] caballos y aves[.] Todos ellos viven en armonía[.]','Comas para la lista y puntos para las dos oraciones.'],
+[3,'Durante el verano[,] los agricultores se reúnen para cosechar el trigo[.] Es un trabajo pesado[,] pero toda la comunidad colabora con ganas[.]','Coma tras el inicio «Durante el verano» y antes de «pero».'],
+[3,'En el bosque habita el zorro[,] el pudú[,] el carpintero y el chucao[.] Por esta razón[,] debemos proteger la naturaleza del lugar[.]','Comas en la lista de animales y tras «Por esta razón».'],
+[3,'Los canales llevan el agua pura desde la montaña[.] No obstante[,] en época de sequía es indispensable cuidar cada gota[.]','Coma después del conector «No obstante».'],
+[3,'Al atardecer[,] la abuela enciende la cocina de leña[.] Prepara té de hierbas[,] sopaipillas y pan amasado para todos[.]','Coma tras «Al atardecer» y en la lista de alimentos.'],
+[3,'Cuando el sol se oculta tras los cerros[,] el cielo se llena de estrellas[.] Además[,] el sonido de los grillos acompaña el descanso[.]','Coma al cerrar la frase inicial y tras «Además».'],
+[4,'[¿]Cuántos huevos puso la gallina hoy[?]','Las preguntas se encierran entre los signos ¿ y ?.'],
+[4,'[¡]Qué linda quedó la cosecha de este año[!]','Las exclamaciones se abren con ¡ y se cierran con !.'],
+[4,'Mi abuelo [(]el que vive en el campo[)] cría ovejas[.]','Los paréntesis encierran una aclaración y siempre se cierran.'],
+[4,'Llovió toda la noche[;] por la mañana[,] los campos brillaban[.]','El punto y coma separa dos ideas muy relacionadas.'],
+[4,'Fuimos a la feria y compramos papas[,] zanahorias[,] cebollas[…]','Los puntos suspensivos muestran que la lista sigue abierta.'],
+[4,'[¡]Miren[,] llegó el tractor nuevo[!]','Exclamación con ¡ ! y coma tras «Miren».'],
+[4,'La vaca Margarita [(]la más tranquila[)] da mucha leche[;] su cría toma lo que necesita[.]','Paréntesis para la aclaración y punto y coma entre ideas relacionadas.'],
+[4,'[¿]Sabías que las abejas visitan miles de flores[?] Trabajan sin descanso[…]','Pregunta entre ¿ ? y puntos suspensivos al final.']];
+
+let st={stars:0,done:{}},custom=[],lvl=1,idx=0,sel=null,pick={},tries=0,fin=false,cur=null,slots=[];
+try{st=JSON.parse(localStorage.getItem('gp_st'))||st;custom=JSON.parse(localStorage.getItem('gp_c'))||[]}catch(e){}
+const save=()=>{try{localStorage.setItem('gp_st',JSON.stringify(st));localStorage.setItem('gp_c',JSON.stringify(custom))}catch(e){}};
+const all=()=>BASE.concat(custom),list=()=>all().filter(s=>s[0]==lvl),sl=()=>[...document.querySelectorAll('.slot')];
+
+let ac;function snd(f,d=.12,t='triangle'){if(!snd.on)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();const a=[].concat(f),o=ac.createOscillator(),g=ac.createGain(),n=ac.currentTime;o.type=t;o.connect(g);g.connect(ac.destination);a.forEach((x,i)=>o.frequency.setValueAtTime(x,n+i*d));g.gain.setValueAtTime(.2,n);g.gain.linearRampToValueAtTime(.01,n+d*a.length);o.start(n);o.stop(n+d*a.length)}catch(e){}}
+snd.on=true;
+function aud(){snd.on=!snd.on;$('au').textContent=snd.on?'🔊':'🔇';snd(500)}
+function stars(){$('sb').textContent=st.stars+' ★'}
+
+function show(n){document.querySelectorAll('section').forEach(s=>s.classList.toggle('hide',s.id!=='s-'+n));if(n==='home')home();if(n==='farm')farm();if(n==='teacher')tlist();snd(500);scrollTo(0,0)}
+
+function home(){$('lv').innerHTML=LV.map((v,i)=>{const L=all().filter(s=>s[0]==i+1),d=L.filter(s=>st.done[s[1]]).length;
+return `<div class="cd"><div style="font-size:2.6rem">${v.e}</div><h3>Nivel ${i+1}: ${v.n}</h3><small>${v.g}</small><p>${v.d}</p><div class="pb"><i style="width:${d/L.length*100}%"></i></div><p><small>${d} de ${L.length} frases completadas</small></p><button class="b" style="width:100%" onclick="play(${i+1})">${d?(d==L.length?'Repetir':'Seguir jugando'):'Jugar'} →</button></div>`}).join('');stars()}
+
+function play(n){lvl=n;const L=list(),k=L.findIndex(s=>!st.done[s[1]]);idx=k<0?0:k;show('game');load()}
+
+function load(){const L=list();cur=L[idx];pick={};tries=0;fin=false;sel=null;slots=[];
+$('fb').className='fb hide';$('lvi').textContent=`Nivel ${lvl} · Frase ${idx+1} de ${L.length}`;bar();
+$('bc').classList.remove('hide');$('bn').classList.add('hide');$('bn').textContent=idx==L.length-1?'Terminar nivel 🎉':'Siguiente frase →';
+const bk=$('bank');bk.className='bank'+(lvl>3?' s':'');bk.innerHTML=(lvl>3?Object.keys(SYM):[',','.']).map(s=>`<div style="text-align:center"><div class="sym ${s=='.'?'p':s==','?'':'o'}" data-s="${s}" role="button" aria-label="${SYM[s]}">${s}</div><small><b>${SYM[s]}</b></small></div>`).join('');
+const c=$('sent');c.innerHTML='';
+cur[1].split(/(\[[.,;¿?¡!()…]\])/).forEach(p=>{const m=p.match(/^\[([.,;¿?¡!()…])\]$/),e=document.createElement('span');
+if(m){slots.push(m[1]);e.className='slot'}else e.textContent=p;c.appendChild(e)})}
+
+function bar(){$('pr').style.width=(idx+(fin?1:0))/list().length*100+'%'}
+function paint(i){const e=sl()[i],p=pick[i];e.textContent=p||'';e.className='slot'+(p?(p==','?' fc':p=='.'?' fp':' fo'):'')}
+function put(i,s){pick[i]=s;paint(i);snd(600)}
+function tap(i){if(fin)return;if(sel)put(i,sel);else if(pick[i]){delete pick[i];paint(i);snd(400)}}
+$('sent').addEventListener('click',e=>{const t=near(e);if(t>=0)tap(t)});
+function pickSym(s){sel=sel===s?null:s;document.querySelectorAll('#bank .sym').forEach(x=>x.classList.toggle('on',x.dataset.s===sel));snd(500)}
+function fb(t,h,x){const b=$('fb');b.className='fb '+t;b.innerHTML='<b>'+E(h)+'</b>'+(x?'<small>'+E(x)+'</small>':'')}
+
+function check(){if(fin)return;const n=slots.length,f=Object.keys(pick).length;
+if(f<n){snd([220,180],.15,'sawtooth');return fb('w','¡Faltan signos por colocar!','Lee otra vez la frase y piensa dónde falta un signo.')}
+tries++;const bad=slots.map((c,i)=>pick[i]!==c?i:-1).filter(i=>i>=0);
+if(!bad.length){fin=true;sl().forEach(e=>e.classList.add('ok'));let g=0;
+ if(!st.done[cur[1]]){st.done[cur[1]]=1;g=tries==1?2:1;st.stars+=g;save();stars()}
+ snd([523,659,784]);fb('s','¡Excelente trabajo! 🌟'+(g?' +'+g+' ★':''),cur[2]);bar();
+ $('bc').classList.add('hide');$('bn').classList.remove('hide')}
+else{bad.forEach(i=>sl()[i].classList.add('no'));snd([220,180],.15,'sawtooth');
+ fb('e',bad.length+' signo(s) no están bien. Los marqué en rojo.',tries>1?'Pista: '+cur[2]:'Toca un signo para quitarlo y prueba otra vez.')}}
+
+function next(){if(idx+1>=list().length){show('home');return}idx++;load()}
+
+function say(){if(!window.speechSynthesis)return fb('w','Tu navegador no puede leer en voz alta.','');
+let k=0;const t=cur[1].replace(/\[[.,;¿?¡!()…]\]/g,()=>pick[k++]||'');speechSynthesis.cancel();
+const u=new SpeechSynthesisUtterance(t);u.lang='es-CL';u.rate=.85;speechSynthesis.speak(u)}
+
+/* Arrastrar con puntero (ratón, lápiz y táctil) o tocar para seleccionar */
+let dr=null;const gh=$('gh');
+function near(e){let b=-1,m=60;sl().forEach((x,i)=>{const r=x.getBoundingClientRect(),d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height/2));if(d<m){m=d;b=i}});return b}
+$('bank').addEventListener('pointerdown',e=>{const el=e.target.closest('.sym');if(!el)return;e.preventDefault();dr={s:el.dataset.s,x:e.clientX,y:e.clientY,m:0}});
+addEventListener('pointermove',e=>{if(!dr)return;
+ if(!dr.m&&Math.hypot(e.clientX-dr.x,e.clientY-dr.y)>8){dr.m=1;gh.textContent=dr.s;gh.className='sym'+(dr.s=='.'?' p':dr.s==','?'':' o');gh.style.display='flex';snd(500)}
+ if(dr.m){gh.style.left=e.clientX+'px';gh.style.top=e.clientY+'px'}});
+addEventListener('pointerup',e=>{if(!dr)return;gh.style.display='none';
+ if(dr.m){const t=near(e);if(t>=0&&!fin)put(t,dr.s)}else pickSym(dr.s);
+ sl().forEach(x=>x.classList.remove('hot'));dr=null});
+addEventListener('pointercancel',()=>{dr=null;gh.style.display='none'});
+
+/* Granja */
+const FM=[['🐔','Gallina Clotilde',0],['🥕','Huerto de zanahorias',4],['🐄','Vaca Margarita',8],['🚜','Tractor verde',14],['🍎','Manzano del campo',20],['🌻','Campo de girasoles',28],['🐑','Ovejas del cerro',38],['🐝','Colmena de abejas',48]];
+function farm(){$('fg').innerHTML=FM.map(([e,n,r])=>`<div class="cd ${st.stars>=r?'':'lock'}" style="text-align:center;padding:12px"><div style="font-size:2.8rem">${e}</div><b>${n}</b><br><small>${st.stars>=r?'¡Desbloqueado!':'Requiere '+r+' ★'}</small></div>`).join('');
+const nx=FM.find(f=>f[2]>st.stars);$('fn').textContent=`Tienes ${st.stars} ★. `+(nx?`Te faltan ${nx[2]-st.stars} ★ para: ${nx[1]}`:'¡Desbloqueaste toda la granja! 🎉')}
+
+/* Docente */
+function addS(){const t=$('tt').value.trim(),m=$('tm');
+if(!/\[[.,;¿?¡!()…]\]/.test(t))return m.textContent='Incluye al menos un marcador, por ejemplo [,] o [.], en la frase.';
+if(/[\[\]]/.test(t.replace(/\[[.,;¿?¡!()…]\]/g,'')))return m.textContent='Solo se permiten marcadores como [,] [.] [;] […] [¿] [?] [¡] [!] [(] [)].';
+custom.push([+$('tl').value,t,$('th').value.trim()||'Frase creada por tu docente.']);save();
+$('tt').value=$('th').value='';m.textContent='¡Guardada! Ya está disponible en el nivel '+$('tl').value+'.';snd([523,659]);tlist()}
+function tlist(){$('cl').innerHTML=custom.length?custom.map((s,i)=>`<li>Nivel ${s[0]}: ${E(s[1])} <button class="b l" style="padding:2px 10px" onclick="delS(${i})">Borrar</button></li>`).join(''):'<li><small>Aún no hay frases propias.</small></li>'}
+function delS(i){custom.splice(i,1);save();tlist()}
+function rst(b){if(!b.dataset.c){b.dataset.c=1;b.textContent='¿Seguro? Toca otra vez para borrar todo';setTimeout(()=>{delete b.dataset.c;b.textContent='Reiniciar progreso'},4000);return}
+st={stars:0,done:{}};save();delete b.dataset.c;b.textContent='Progreso reiniciado ✔';stars()}
+function prt(){const v=$('tp').value,L=all().filter(s=>v=='0'||s[0]==v),
+f=(s,k)=>s[1].split(/(\[[.,;¿?¡!()…]\])/).map(p=>/^\[/.test(p)?(k?`<b class="s">${p[1]}</b>`:'<span class="s"></span>'):E(p)).join('');
+const w=window.open('','_blank');if(!w)return $('tm2').textContent='El navegador bloqueó la ventana. Permite ventanas emergentes e inténtalo otra vez.';
+w.document.write(`<!DOCTYPE html><meta charset="utf-8"><title>Ficha de puntuación</title><style>body{font:18px/2.3 sans-serif;padding:24px}.s{display:inline-block;min-width:34px;border-bottom:2px solid #000;text-align:center;margin:0 3px}h1{text-align:center;color:#065f46}.n{page-break-before:always}</style><h1>Ficha de puntuación</h1><p>Nombre: ______________________ Fecha: __________ Curso: ______</p><p><b>Escribe el signo de puntuación que corresponde en cada espacio.</b></p><ol>${L.map(s=>'<li>'+f(s,0)+'</li>').join('')}</ol>${$('tk').checked?'<div class="n"><h1>Solucionario</h1><ol>'+L.map(s=>'<li>'+f(s,1)+'</li>').join('')+'</ol></div>':''}`);
+w.document.close();setTimeout(()=>w.print(),400)}
+
+show('home');
+</script>
+</body></html>
