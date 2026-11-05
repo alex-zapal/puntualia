@@ -1,2 +1,2 @@
 # puntualia
-Ejersicios para mejorar la comprención lectora respdetando los signos de puntuaCIÓN
+Plataforma digital diseñada para desarrollar y fortalecer habilidades de puntuación, con énfasis en su contribución al desarrollo de la comprensión lectora. Su propósito es favorecer la correcta interpretación de textos, la identificación de relaciones entre ideas y la comprensión de enunciados, considerando estas habilidades como herramientas fundamentales para la resolución de problemas matemáticos y el análisis de textos de diversas áreas del conocimiento.
